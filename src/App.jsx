@@ -4,30 +4,28 @@ import { createApi } from "unsplash-js"
 
 
 const api = createApi({
-  accessKey: fff
+  accessKey: "e1uyUwS-ZeVJucBPfEHg1tKtwYpH5apYxBCWZI1fBkY"
 })
 
 
 
-function StaggeredGrid(data, columns = 2) {
+function StaggeredGrid(photos, columns = 2) {
   
 
   return(
-    <>
-    <div className='staggeredGrid'>
-    {data.map(a => {
-    const { id, user, urls } = a
     
-    return ( <img key={id} src={urls.regular} /> )
-   }
-    )}
+    <div className='.staggered-grid' >
+    {photos.map(a => {
+    
+    (<li key={a.id}><img  src={a.urls.regular} /> </li>  )
+    })}
     </div>
-    </>
+  
   )
 }
 
 function App() {
-  const [data, setPhotosResponse] = useState(null);
+  const [unsplashResult, setPhotosResponse] = useState(null);
 
   api.users.getPhotos
   useEffect(() => {
@@ -45,18 +43,20 @@ function App() {
       });
   }, []);
 
-  if (data === null) {
+  if (unsplashResult === null) {
     return <div>Loading...</div>;
-  } else if (data.errors) {
+  } else if (unsplashResult.errors) {
     return (
       <div>
-        <div>{data.errors[0]}</div>
+        <div>{unsplashResult.errors[0]}</div>
         <div>PS: Make sure to set your access token!</div>
       </div>
     );
   } else {
     return (
-      <StaggeredGrid data = {data.response.results} />
+      <StaggeredGrid 
+      photos = {unsplashResult.response.results}
+       columns = {2} />
     )
   }
 }

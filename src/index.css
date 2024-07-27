@@ -67,7 +67,7 @@ button:focus-visible {
   }
 }
 
-.staggeredGrid {
+.staggered-grid {
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
