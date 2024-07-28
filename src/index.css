@@ -70,7 +70,20 @@ button:focus-visible {
 .staggered-grid {
   display: flex;
   flex-flow: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  height: 300px;
+  width: 600px;
+  overflow: scroll;
+  box-shadow: inset;
+  box-sizing: border-box;
+
+
+  filter: grayscale(1)  brightness(1);
+  
+  mask-clip: rect(50px,50px,50px,50px);
+
+
+  
   
   
 }

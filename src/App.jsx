@@ -9,16 +9,14 @@ const api = createApi({
 
 
 
-function StaggeredGrid(photos, columns = 2) {
-  
-
+function StaggeredGrid({photos}, columns = 2) {
   return(
     
-    <div className='.staggered-grid' >
-    {photos.map(a => {
-    
-    (<li key={a.id}><img  src={a.urls.regular} /> </li>  )
-    })}
+    <div className="staggered-grid">
+    {photos.map((a) => 
+  
+    (<img  src={a.urls.regular} />) 
+    )}
     </div>
   
   )
