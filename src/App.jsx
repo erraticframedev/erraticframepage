@@ -1,6 +1,7 @@
 import { useState, Fragment, useEffect } from 'react'
 import './App.css'
 import { createApi } from "unsplash-js"
+import { Splide, SplideSlide } from "@splidejs/react-splide"
 
 
 const api = createApi({
@@ -12,12 +13,36 @@ const api = createApi({
 function StaggeredGrid({photos}, columns = 2) {
   return(
     
-    <div className="staggered-grid">
+    <Splide options={{
+      
+      arrows:false,
+      type: "slide",
+      focus: "center",
+      perMove:1,
+      
+    
+      waitForTransition:true,
+      isNavigation:true,
+      wheel: true,
+      focusableNodes:"img",
+      live:true,  
+      perPage:3,
+      height: "15rem",
+      rewind: true,
+      gap: "0rem",
+      trimSpace:false,
+      pagination:false,
+    }}>
     {photos.map((a) => 
   
-    (<img  src={a.urls.regular} />) 
+    (
+      <SplideSlide key={a.id}>
+        <img  src={a.urls.regular} />
+      </SplideSlide>
+    
+    ) 
     )}
-    </div>
+    </Splide>
   
   )
 }
